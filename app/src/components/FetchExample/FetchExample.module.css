@@ -1,0 +1,28 @@
+.grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.resultLabel {
+    font-size: 40px;
+}
+
+.graphResult,
+.restResult {
+    margin: 20px 0;
+    font-size: 100px;
+    line-height: 1.5;
+}
+
+.restResult {
+    color: red;
+}
+
+.graphResult {
+    color: greenyellow;
+}
+
+.button {
+    font-size: 20px;
+}

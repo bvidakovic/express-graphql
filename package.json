@@ -1,0 +1,24 @@
+{
+    "name": "express-graphql",
+    "version": "1.0.0",
+    "main": "server.ts",
+    "license": "MIT",
+    "scripts": {
+        "start": "nodemon  ./server.js"
+    },
+    "dependencies": {
+        "@graphql-tools/load-files": "^6.6.1",
+        "@graphql-tools/merge": "^8.3.12",
+        "@graphql-tools/schema": "^9.0.10",
+        "body-parser": "^1.20.1",
+        "cors": "^2.8.5",
+        "eslint": "^8.28.0",
+        "express": "^4.18.2",
+        "express-graphql": "^0.12.0",
+        "graphql": "^16.6.0",
+        "lowdb": "^5.0.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
+}
