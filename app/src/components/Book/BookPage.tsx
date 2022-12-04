@@ -27,11 +27,11 @@ interface ICategory {
     name: string;
 }
 
-interface IBook {
+export interface IBook {
     id: number;
     title: string;
-    description: string;
     author: IAuthor;
+    description: string;
     category: ICategory;
 }
 
@@ -46,6 +46,7 @@ export function BookPage() {
 
     if (loading) return <span>Loading...</span>;
     if (error) return <span>{error.message}</span>;
+    if (!data) return null;
     const { title, description, author, category } = data.book;
 
     return (

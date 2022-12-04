@@ -6,6 +6,7 @@ import { gql } from '@apollo/client';
 import { AUTHOR_DETAILS_FRAGMENT } from '../Author/Author';
 import { CATEGORY_DETAILS_FRAGMENT } from '../Category/Category';
 import styles from './BookCard.module.css';
+import { IBook } from './BookPage';
 
 export const BOOK_CARD_FRAGMENT = gql`
     fragment BookCard on Book {
@@ -22,7 +23,11 @@ export const BOOK_CARD_FRAGMENT = gql`
     ${CATEGORY_DETAILS_FRAGMENT}
 `;
 
-export function BookCard({ id, title, author, category }) {
+export interface IBookCardProps extends Omit<IBook, 'description'> {
+    className?: string;
+}
+
+export function BookCard({ id, title, author, category }: IBookCardProps) {
     return (
         <article className={styles.bookCard}>
             <img className={styles.img} src="./book-cover.jpg" alt="cover" />

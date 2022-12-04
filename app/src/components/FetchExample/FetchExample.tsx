@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
 
+import { IBook } from '../Book/BookPage';
 import styles from './FetchExample.module.css';
 
 export function FetchExample() {
@@ -15,9 +16,10 @@ export function FetchExample() {
     const handleRestFetch = async () => {
         setRestLoaded(false);
         const startTime = performance.now();
-        const books = await (
-            await fetch('http://localhost:4000/api/books')
-        ).json();
+        const books: (Omit<IBook, 'author' | 'category'> & {
+            authorId: number;
+            categoryId: number;
+        })[] = await (await fetch('http://localhost:4000/api/books')).json();
 
         const authors = await Promise.all(
             books.map(async (b) => {
@@ -77,7 +79,7 @@ export function FetchExample() {
         const endTime = performance.now();
         setGraphTime(endTime - startTime);
 
-        const consoleData = booksRes.data.books
+        const consoleData = (booksRes.data.books as IBook[])
             .slice(0, 5)
             .map(({ title, author, category }) => ({
                 title,
@@ -93,8 +95,11 @@ export function FetchExample() {
         <section className={styles.section}>
             <div className={styles.grid}>
                 <div>
-                    <p className={styles.resultLabel}>Response time:</p>
-                    {/* <p className={styles.restResult}>{restTime}</p> */}
+                    <p className={styles.resultLabel}>
+                        REST API <br />
+                        response time:
+                    </p>
+
                     <CountUp
                         end={restTime}
                         decimals={2}
@@ -121,7 +126,10 @@ export function FetchExample() {
                     </button>
                 </div>
                 <div>
-                    <p className={styles.resultLabel}>Response time:</p>
+                    <p className={styles.resultLabel}>
+                        GraphQL API <br />
+                        response time:
+                    </p>
                     <CountUp
                         end={graphTime}
                         decimals={2}

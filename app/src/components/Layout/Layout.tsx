@@ -5,11 +5,11 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 import styles from './Layout.module.css';
 
 export function Layout() {
-    const linkClassName = ({ isActive }) =>
+    const linkClassName = ({ isActive }: { isActive: boolean }) =>
         className(styles.link, isActive && styles.linkActive);
 
     return (
-        <div>
+        <div className={styles.layout}>
             <nav className={styles.nav}>
                 <ul className={styles.list}>
                     <li key="/" className={styles.listItem}>

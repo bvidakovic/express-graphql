@@ -1,3 +1,7 @@
+.books {
+    padding: 0 var(--content-side-gap);
+}
+
 .heading {
     font-size: 40px;
     margin: 50px 0;

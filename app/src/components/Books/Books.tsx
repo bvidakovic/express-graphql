@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useQuery, gql } from '@apollo/client';
 
-import { BookCard, BOOK_CARD_FRAGMENT } from '../Book/BookCard';
+import { BookCard, BOOK_CARD_FRAGMENT, IBookCardProps } from '../Book/BookCard';
 import styles from './Books.module.css';
 
 const BOOKS_QUERY = gql`
@@ -15,13 +15,15 @@ const BOOKS_QUERY = gql`
 `;
 
 export function Books() {
-    const { loading, error, data } = useQuery(BOOKS_QUERY);
+    const { loading, error, data } = useQuery<{ books: IBookCardProps[] }>(
+        BOOKS_QUERY
+    );
 
     if (loading) return <span>Loading...</span>;
     if (error) return <span>{error.message}</span>;
 
     return (
-        <section>
+        <section className={styles.books}>
             <h2 className={styles.heading}>Books</h2>
             <ul className={styles.list}>
                 {data?.books.map((b) => (

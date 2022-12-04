@@ -13,6 +13,7 @@ import './App.css';
 import { BookPage } from './components/Book/BookPage';
 import { Books } from './components/Books/Books';
 import { FetchExample } from './components/FetchExample/FetchExample';
+import { Home } from './components/Home/Home';
 import { Layout } from './components/Layout/Layout';
 
 const client = new ApolloClient({
@@ -22,7 +23,8 @@ const client = new ApolloClient({
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/*" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Home />} />
             <Route path="books" element={<Books />} />
             <Route path="speed-test" element={<FetchExample />} />
             <Route path="book/:bookId" element={<BookPage />} />
