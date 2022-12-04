@@ -9,14 +9,6 @@
     background-color: var(--layout-background-color);
 }
 
-/* .layout:before {
-    content: '';
-    inset: 0 0 0 0;
-    position: absolute;
-    background: url('../../assets/geta_webadress_white_RGB.svg') no-repeat
-        center;
-} */
-
 .nav {
     z-index: 999;
     width: 100vw;
@@ -70,7 +62,6 @@
 .content {
     margin: 0 auto;
     position: relative;
-    max-width: var(--content-max-width);
-    --content-min-height: calc(100vh - var(--nav-height));
     min-height: var(--content-min-height);
+    --content-min-height: calc(100vh - var(--nav-height));
 }
