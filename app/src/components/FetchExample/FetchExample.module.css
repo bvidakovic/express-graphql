@@ -1,7 +1,20 @@
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--content-min-height);
+}
+
 .grid {
-    display: grid;
     gap: 20px;
+    width: 100%;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr min-content;
+}
+
+.grid div:nth-child(3) {
+    grid-column: 1/3;
 }
 
 .resultLabel {
@@ -10,19 +23,26 @@
 
 .graphResult,
 .restResult {
+    display: block;
     margin: 20px 0;
     font-size: 100px;
     line-height: 1.5;
 }
 
-.restResult {
+.red {
     color: red;
 }
 
-.graphResult {
+.green {
     color: greenyellow;
 }
 
 .button {
     font-size: 20px;
+}
+
+.buttonBoth {
+    font-size: 25px;
+    margin-top: 20px;
+    min-width: 300px;
 }
