@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import styles from './FetchExample.module.css';
 
 export function FetchExample() {
@@ -24,7 +25,7 @@ export function FetchExample() {
 
         console.info('authors: ', authors);
         const endTime = performance.now();
-        setRestTime((endTime - startTime).toFixed(2));
+        setRestTime(Number((endTime - startTime).toFixed(2)));
     };
 
     const handleGraphFetch = async () => {
@@ -52,7 +53,7 @@ export function FetchExample() {
 
         console.info('books: ', booksRes.data.books);
         const endTime = performance.now();
-        setGraphTime((endTime - startTime).toFixed(2));
+        setGraphTime(Number((endTime - startTime).toFixed(2)));
     };
 
     return (
@@ -63,7 +64,7 @@ export function FetchExample() {
                 <button
                     className={styles.button}
                     onClick={handleRestFetch}
-                    type='button'
+                    type="button"
                 >
                     Fetch Rest
                 </button>
@@ -75,7 +76,7 @@ export function FetchExample() {
                 <button
                     className={styles.button}
                     onClick={handleGraphFetch}
-                    type='button'
+                    type="button"
                 >
                     Fetch GraphQL
                 </button>

@@ -1,11 +1,11 @@
-.book {
+.bookCard {
     overflow: hidden;
     border-radius: 4px;
     border: 1px solid white;
     transition: 200ms linear all;
 }
 
-.book:hover {
+.bookCard:hover {
     transform: scale(0.95);
 }
 

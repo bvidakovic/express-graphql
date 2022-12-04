@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Books.module.css';
-import { Book, BOOK_DETAILS_FRAGMENT } from '../Book/Book';
+import { BookCard, BOOK_DETAILS_FRAGMENT } from '../Book/BookCard';
 import { useQuery, gql } from '@apollo/client';
 
 const BOOKS_QUERY = gql`
@@ -23,7 +23,7 @@ export function Books() {
             <ul className={styles.list}>
                 {data.books.map((b) => (
                     <li className={styles.listItem} key={b.id}>
-                        <Book {...b} />
+                        <BookCard {...b} />
                     </li>
                 ))}
             </ul>
