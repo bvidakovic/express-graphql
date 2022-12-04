@@ -19,7 +19,6 @@ export function FetchExample() {
             await fetch('http://localhost:4000/api/books')
         ).json();
 
-        console.info('books: ', books);
         const authors = await Promise.all(
             books.map(async (b) => {
                 return await (
@@ -30,9 +29,22 @@ export function FetchExample() {
             })
         );
 
-        console.info('authors: ', authors);
         const endTime = performance.now();
-        setRestTime(Number((endTime - startTime).toFixed(2)));
+        setRestTime(endTime - startTime);
+
+        const consoleData = books
+            .slice(0, 5)
+            .map(({ title, authorId, categoryId }) => ({
+                title,
+                authorId,
+                categoryId,
+            }));
+
+        console.info('\n\n\n%cREST API book results', 'font-size: 30px');
+        console.table(consoleData);
+
+        console.info('\n\n\n%cREST API authors results', 'font-size: 30px');
+        console.table(authors.slice(0, 5));
     };
 
     const handleGraphFetch = async () => {
@@ -43,6 +55,9 @@ export function FetchExample() {
                 books{
                     id
                     title
+                    category {
+                        name
+                    }
                     description
                     author {
                         firstName
@@ -59,9 +74,19 @@ export function FetchExample() {
             )
         ).json();
 
-        console.info('books: ', booksRes.data.books);
         const endTime = performance.now();
-        setGraphTime(Number((endTime - startTime).toFixed(2)));
+        setGraphTime(endTime - startTime);
+
+        const consoleData = booksRes.data.books
+            .slice(0, 5)
+            .map(({ title, author, category }) => ({
+                title,
+                category: category.name,
+                author: `${author.firstName} ${author.lastName}`,
+            }));
+
+        console.info('\n\n\n%cGraphQL results', 'font-size: 30px');
+        console.table(consoleData, ['title', 'author', 'category']);
     };
 
     return (
