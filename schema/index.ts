@@ -13,6 +13,4 @@ const resolvers = mergeResolvers(
     loadFilesSync(path.join(__dirname, './**/*.resolver.*'))
 );
 
-module.exports = {
-    schema: makeExecutableSchema({ typeDefs, resolvers }),
-};
+export const schema = makeExecutableSchema({ typeDefs, resolvers });
