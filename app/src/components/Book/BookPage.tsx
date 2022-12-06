@@ -56,6 +56,10 @@ export function BookPage() {
             </div>
             <div className={styles.content}>
                 <h1>{title}</h1>
+                <p>
+                    {author.firstName} {author.lastName}
+                </p>
+                <p>{category.name}</p>
                 <p>{description}</p>
             </div>
         </section>
