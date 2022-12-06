@@ -4,6 +4,7 @@ import CountUp from 'react-countup';
 
 import { IBook } from '../Book/BookPage';
 import styles from './FetchExample.module.css';
+import { getAuthor, getBooks } from './fetchUtils';
 
 export function FetchExample() {
     const [restTime, setRestTime] = useState(0);
@@ -19,16 +20,10 @@ export function FetchExample() {
         const books: (Omit<IBook, 'author' | 'category'> & {
             authorId: number;
             categoryId: number;
-        })[] = await (await fetch('http://localhost:4000/api/books')).json();
+        })[] = await getBooks();
 
         const authors = await Promise.all(
-            books.map(async (b) => {
-                return await (
-                    await fetch(
-                        `http://localhost:4000/api/author/${b.authorId}`
-                    )
-                ).json();
-            })
+            books.map(async (b) => await getAuthor(b.authorId))
         );
 
         const endTime = performance.now();

@@ -10,7 +10,7 @@ type Query {
 
 input CategoryInput {
     id: Int!
-    name: String
+    name: String!
 }
 
 type Mutation {

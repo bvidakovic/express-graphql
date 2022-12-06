@@ -11,8 +11,8 @@ type Query {
 
 input AuthorInput {
     id: Int!
-    firstName: String
-    lastName: String
+    firstName: String!
+    lastName: String!
 }
 
 type Mutation {

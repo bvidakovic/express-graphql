@@ -12,11 +12,11 @@ type Query {
 }
 
 input BookInput {
-    id: Int
+    id: Int!
     title: String!
-    description: String
-    authorId: Int
-    categoryId: Int
+    description: String!
+    authorId: Int!
+    categoryId: Int!
 }
 
 type Mutation {
